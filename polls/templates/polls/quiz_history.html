@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row">
+    <div class="col-lg-8 col-lg-offset-2">
+        <div class="panel panel-default">
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Maximum Percentage</th>
+                        <th>Minimum Percentage</th>
+                        <th>Average Percentage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{maximum_percentage}}%</td>
+                        <td>{{minimum_percentage}}%</td>
+                         <td>{{average_percentage }}%</td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+                <div>
+                    <h2>Result History</h2>
+                </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Participate</th>
+                        <th>Percentage</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                {% for r_history in result %}
+                    <tr>
+                        <td>{{r_history.user.username}}</td>
+                        <td>{{r_history.percentage}}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock content %}

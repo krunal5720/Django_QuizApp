@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-8 col-lg-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading text-center">
+                <h3 class="panel-title">Quiz Result</h3>
+            </div>
+
+
+            {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                <div {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+            <ul class="list-group">
+
+                <li class="list-group-item">Total Questions &mdash; <strong>5</strong></li>
+                <li class="list-group-item">Right Answer &mdash; <strong>{{count}}</strong></li>
+                <li class="list-group-item">Percentage &mdash; <strong>{{percentage}}%</strong></li>
+            </ul>
+
+            {% if count == 0 or count == 1 or count == 2 %}
+            <form class="form-inline" style="margin-left :45%">
+                <a class="btn btn-secondary mt-4" href="{% url 'polls:end_poll' %}" role="button">Re-take quiz</a>
+            </form>
+            {% endif %}
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}
